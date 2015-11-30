@@ -9,14 +9,21 @@ class ArticlesController extends AppController{
 	);
 
 	public function index(){		
-		$this->set('articles',$this->paginate());
-
-			$title=$this->request->data['Articles']['title'];
-
-			$data=$this->Article->find('all',array('conditions'=>array(
-					'Article.title LIKE'=>'%'.'title'.'%')));
 			
-			$this->set('Articles',$data);
+			$data=$this->request->data;
+
+				if($this->request->is('post')){
+					$this->paginate=[
+						'conditions'=>['OR'=>
+							['title like'=>'%'.$this->request->data['Article']['title'].'%',
+						 		'content like'=>'%'.$this->request->data['Article']['title'].'%'
+							]
+						]
+					];	
+					
+				}
+					$this->set('articles',$this->paginate());	
+
 	}
 
 	public function add(){
