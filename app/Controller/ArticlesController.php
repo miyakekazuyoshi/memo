@@ -11,7 +11,7 @@ class ArticlesController extends AppController{
 	public function index(){		
 		$this->set('articles',$this->paginate());
 
-			$article=$this->request->data['Articles']['title'];
+			$title=$this->request->data['Articles']['title'];
 
 			$data=$this->Article->find('all',array('conditions'=>array(
 					'Article.title LIKE'=>'%'.'title'.'%')));
