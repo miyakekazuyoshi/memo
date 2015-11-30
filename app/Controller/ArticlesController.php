@@ -10,13 +10,14 @@ class ArticlesController extends AppController{
 
 	public function index(){		
 		$this->set('articles',$this->paginate());
-		$data=$this->request->data;
-		
-			$this->Article->find(array('conditions'=>array('Article.title LIKE'=>'%'.'検索したいワード'.'%')));
-			$this->set('Articles',$data);			
-						
-	}
 
+			$article=$this->request->data['Articles']['title'];
+
+			$data=$this->Article->find('all',array('conditions'=>array(
+					'Article.title LIKE'=>'%'.'title'.'%')));
+			
+			$this->set('Articles',$data);
+	}
 
 	public function add(){
 		if($this->request->is('post')){

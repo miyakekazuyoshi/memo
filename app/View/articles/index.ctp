@@ -31,3 +31,5 @@
 	<?=$this->Paginator->next('次へ　>',array(),null,array('class'=>'next disabled'));?>
 	<?=$this->Paginator->counter(array('format'=>'前%count%件'));?>
 	<?=$this->Paginator->counter(array('format'=>'{:page}/{:pages}ページを表示'));?>
+
+	
