@@ -33,5 +33,7 @@
 	<?=$this->Paginator->counter(array('format'=>'{:page}/{:pages}ページを表示'));?>
 
 	<?=$this->Form->create('Article',array('action'=>'index'));?>
-	<?=$this->Form->input('title');?>
+	<?=$this->Form->input('search');?>
 	<?=$this->Form->end('検索');?>
+
+	<?=$this->Html->link('戻る',['controller'=>'menu']);?>

@@ -32,7 +32,8 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $components=['Flash'];
-
 	
+
+	public $components=['Flash'];
+		
 }

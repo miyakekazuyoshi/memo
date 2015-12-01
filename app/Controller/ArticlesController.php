@@ -15,8 +15,8 @@ class ArticlesController extends AppController{
 				if($this->request->is('post')){
 					$this->paginate=[
 						'conditions'=>['OR'=>
-							['title like'=>'%'.$this->request->data['Article']['title'].'%',
-						 		'content like'=>'%'.$this->request->data['Article']['title'].'%'
+							['title like'=>'%'.$this->request->data['Article']['search'].'%',
+						 		'content like'=>'%'.$this->request->data['Article']['search'].'%'
 							]
 						]
 					];	

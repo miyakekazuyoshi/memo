@@ -17,3 +17,5 @@
 			</td>
 		</tr>
 	<?php }?>
+
+	<?=$this->Html->link('戻る',['controller'=>'menu']);?>

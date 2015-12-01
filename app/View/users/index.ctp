@@ -22,3 +22,6 @@
 		
 	<?php }?>
 </table>
+
+
+<?=$this->Html->link('戻る',['controller'=>'menu']);?>

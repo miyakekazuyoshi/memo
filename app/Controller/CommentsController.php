@@ -13,7 +13,7 @@ class CommentsController extends AppController{
 			$this->Comment->save($this->request->data);
 
 			$this->Flash->set('保存に成功しました。');
-			$this->redirect(['action'=>'index']);
+			$this->redirect(['controller'=>'articles','action'=>'index']);
 		}
 			$this->set('articles',$this->Comment->Article->find('list',array(
 				'fields'=>array('Article.title'))));	
