@@ -67,6 +67,14 @@ class ArticlesController extends AppController{
 	}
 
 	public function search(){
-		
+		if($this->request->is('post')){
+			$this->pqginate=[
+				'conditions'=>['OR'=>
+					['title like'=>'%'.$this->request->data['Article']['title'].'%',
+						'content like'=>'%'.$this->request->data['Article']['title'].'%'
+					]	
+				]			
+			];
+		}
 	}
 }

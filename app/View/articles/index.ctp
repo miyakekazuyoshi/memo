@@ -32,4 +32,6 @@
 	<?=$this->Paginator->counter(array('format'=>'前%count%件'));?>
 	<?=$this->Paginator->counter(array('format'=>'{:page}/{:pages}ページを表示'));?>
 
-	
+	<?=$this->Form->create('Article',array('action'=>'index'));?>
+	<?=$this->Form->input('title');?>
+	<?=$this->Form->end('検索');?>
