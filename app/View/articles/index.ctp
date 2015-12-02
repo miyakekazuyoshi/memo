@@ -2,6 +2,7 @@
 <?=$this->Html->link('コメントする',['controller'=>'comments','action'=>'add'])?><br>
 <td>
 	<table>
+		
 		<tr>article
 			<th>user</th>
 			<th>item</th>
@@ -9,7 +10,7 @@
 			<th>content</th>
 			<th>編集</th>
 		</tr>
-
+		
 	<?php foreach($articles as $article) {?>
 		<tr>
 			<td><?=$article['User']['name'];?></td>
@@ -26,14 +27,18 @@
 
 	<?php }?>
 
-	<?=$this->Paginator->prev('< 前へ',array(),null,array('class'=>'prev disabled'));?>
-	<?=$this->Paginator->numbers(array('separator'=>''));?>
-	<?=$this->Paginator->next('次へ　>',array(),null,array('class'=>'next disabled'));?>
-	<?=$this->Paginator->counter(array('format'=>'前%count%件'));?>
-	<?=$this->Paginator->counter(array('format'=>'{:page}/{:pages}ページを表示'));?>
+	
+		<?=$this->Paginator->prev('< 前へ',array(),null,array('class'=>'prev disabled'));?>
+		<?=$this->Paginator->numbers(array('separator'=>''));?>
+		<?=$this->Paginator->next('次へ　>',array(),null,array('class'=>'next disabled'));?>
+		<?=$this->Paginator->counter(array('format'=>'前%count%件'));?>
+		<?=$this->Paginator->counter(array('format'=>'{:page}/{:pages}ページを表示'));?>
+	
+		<?=$this->Form->create('Article',array('action'=>'index'));?>
+		<?=$this->Form->input('search');?>
+		<?=$this->Form->end('検索');?>
 
-	<?=$this->Form->create('Article',array('action'=>'index'));?>
-	<?=$this->Form->input('search');?>
-	<?=$this->Form->end('検索');?>
-
-	<?=$this->Html->link('戻る',['controller'=>'menu']);?>
+	<div align='right'>
+		<?=$this->Html->link('戻る',['controller'=>'menu']);?>
+	</div>	
+	
