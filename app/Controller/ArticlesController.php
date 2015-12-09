@@ -4,30 +4,36 @@ class ArticlesController extends AppController{
 	public $components=array('Paginator');
 
 	public $paginator=array(
-		'limit'=>5,
+		'limit'=>10,
 		'order'=>array('id'=>'asc'),
 	);
 
 	public function index(){		
 			
 			$data=$this->request->data;
-
 				if($this->request->is('post')){
 					$this->paginate=[
 						'conditions'=>['OR'=>
-							['title like'=>'%'.$this->request->data['Article']['search'].'%',
-						 		'content like'=>'%'.$this->request->data['Article']['search'].'%'
-							]
+						 	['content like'=>'%'.$this->request->data['Article']['search'].'%',
+									'title like'=>'%'.$this->request->data['Article']['search'].'%',									
+							],	
+							'item_id'=>$this->request->data['item_id'],					
 						]
-					];	
-					
+						
+					];
+					//var_dump($this->request->data);
+				//exit;
+				
 				}
 					$this->set('articles',$this->paginate());	
-
+					$this->set('title',$this->Article->find('list',array(
+						'fields'=>array('id','title')
+					)));
 	}
 
 	public function add(){
 		if($this->request->is('post')){
+			
 			
 			$this->Article->save($this->request->data);
 
@@ -68,13 +74,20 @@ class ArticlesController extends AppController{
 
 	public function search(){
 		if($this->request->is('post')){
-			$this->pqginate=[
+
+			$this->paginate=[
 				'conditions'=>['OR'=>
-					['title like'=>'%'.$this->request->data['Article']['title'].'%',
-						'content like'=>'%'.$this->request->data['Article']['title'].'%'
+					['item like'=>'%'.$this->request->data['Article']['search'].'%',
+						'content like'=>'%'.$this->request->data['Article']['search'].'%'
 					]	
 				]			
+
 			];
+
 		}
+		$this->set('title',$this->Article->find('list',array(
+			'fields'=>array('id','title')
+			)));
+		
 	}
 }

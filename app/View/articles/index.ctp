@@ -27,15 +27,28 @@
 
 	<?php }?>
 
-	
-		<?=$this->Paginator->prev('< 前へ',array(),null,array('class'=>'prev disabled'));?>
+	<div align='center'>
+		<?=$this->Paginator->prev('<- 前へ',array(),null,array('class'=>'prev disabled'));?>
 		<?=$this->Paginator->numbers(array('separator'=>''));?>
-		<?=$this->Paginator->next('次へ　>',array(),null,array('class'=>'next disabled'));?>
 		<?=$this->Paginator->counter(array('format'=>'前%count%件'));?>
 		<?=$this->Paginator->counter(array('format'=>'{:page}/{:pages}ページを表示'));?>
-	
+		<?=$this->Paginator->next('次へ ->',array(),null,array('class'=>'next disabled'));?>
+	</div>
 		<?=$this->Form->create('Article',array('action'=>'index'));?>
 		<?=$this->Form->input('search');?>
+		<br>
+		Item<br>
+		<br>
+
+		<label><input type="checkbox"name="item_id[]"value="3">error</label>
+		<br>
+		<label><input type="checkbox"name="item_id[]"value="4">syntax</label>
+		<br>
+		<label><input type="checkbox"name="item_id[]"value="5">function</label>
+		<br>
+		<label><input type="checkbox"name="item_id[]"value="6">その他</label>
+		<br>
+		
 		<?=$this->Form->end('検索');?>
 
 	<div align='right'>
